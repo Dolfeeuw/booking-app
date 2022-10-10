@@ -1,0 +1,13 @@
+@import "colors";
+@import "spacing";
+$font-size: 20px;
+
+@mixin button {
+  .button {
+    background-color: $red;
+    padding: 16px;
+    width: 200px;
+    color: white;
+    border: none;
+  }
+}

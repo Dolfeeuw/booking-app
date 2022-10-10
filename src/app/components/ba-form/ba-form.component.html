@@ -1,6 +1,25 @@
-<app-ba-input label="Last name" name="lastName" id="lastName"></app-ba-input>
-<app-ba-input
-  label="Booking number"
-  name="bookingNumber"
-  id="bookingNumber"
-></app-ba-input>
+<div class="center border-solid flex">
+  <div class="text-center">
+    <h2 class="heading-2 text-bold">{{ title }}</h2>
+    <p>{{ description }}</p>
+  </div>
+
+  <div class="mx-3">
+    <app-ba-input
+      class="d-flex"
+      label="Booking code"
+      name="bookingNumber"
+      id="bookingNumber"
+    ></app-ba-input>
+    <app-ba-input
+      class="d-flex"
+      label="Last name"
+      name="lastName"
+      id="lastName"
+    ></app-ba-input>
+  </div>
+
+  <div class="d-flex">
+    <button type="submit" class="button">Retrieve booking</button>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+$spacer: 8px;
+
+/* Margins */
+@mixin mx-1 {
+  .mx-1 {
+    margin: $spacer;
+  }
+}
+
+@mixin mx-3 {
+  .mx-3 {
+    margin: $spacer * 3;
+  }
+}
+
+/* Padding */
+@mixin pb-1 {
+  .pb-1 {
+    padding-bottom: $spacer;
+  }
+}
+
+@mixin pt-1 {
+  .pt-1 {
+    padding-top: $spacer;
+  }
+}
+
+@mixin px-2 {
+  .px-2 {
+    padding: $spacer * 2;
+  }
+}
+
+/* Utils */
+@mixin text-center {
+  .text-center {
+    text-align: center;
+  }
+}
+
+@mixin center {
+  .center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+  }
+}
+
+@mixin full-width {
+  .full-width {
+    width: 100%;
+  }
+}

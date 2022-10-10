@@ -1,0 +1,15 @@
+@import "colors";
+
+* {
+  background-image: url("/assets/img/af_pattern_bg.png");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+header {
+  overflow: hidden;
+  padding: 20px 10px;
+  color: $white;
+}
