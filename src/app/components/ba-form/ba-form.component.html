@@ -4,22 +4,25 @@
     <p>{{ description }}</p>
   </div>
 
-  <div class="mx-3">
-    <app-ba-input
-      class="d-flex"
-      label="Booking code"
-      name="bookingNumber"
-      id="bookingNumber"
-    ></app-ba-input>
-    <app-ba-input
-      class="d-flex"
-      label="Last name"
-      name="lastName"
-      id="lastName"
-    ></app-ba-input>
-  </div>
-
-  <div class="d-flex">
-    <button type="submit" class="button">Retrieve booking</button>
-  </div>
+  <form [formGroup]="bookingForm" (ngSubmit)="onFormSubmit()">
+    <div class="mx-3">
+      <app-ba-input
+        class="d-flex"
+        label="Booking code"
+        id="bookingNumber"
+        name="bookingNumber"
+        [hasFeedback]="validate(bookingNumber)"
+      ></app-ba-input>
+      <app-ba-input
+        class="d-flex"
+        label="Last name"
+        name="lastName"
+        id="lastName"
+        [hasFeedback]="validate(lastName)"
+      ></app-ba-input>
+    </div>
+    <div class="d-flex">
+      <button type="submit" class="button">Retrieve booking</button>
+    </div>
+  </form>
 </div>

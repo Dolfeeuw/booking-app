@@ -1,18 +1,28 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import {
+  ControlContainer,
+  FormControl,
+  FormGroupDirective,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-ba-input',
   templateUrl: './ba-input.component.html',
-  styleUrls: ['./ba-input.component.scss']
+  styleUrls: ['./ba-input.component.scss'],
+  viewProviders: [
+    { provide: ControlContainer, useExisting: FormGroupDirective },
+  ],
 })
-export class BaInputComponent implements OnInit {
-  @Input() label?: string;
-  @Input() id?: string;
-  @Input() name?: string;
+export class BaInputComponent {
+  @Input() label!: string;
+  @Input() id!: string;
+  @Input() name!: string;
+  @Input() form!: FormControl;
+  @Input() hasFeedback?: object;
 
-  constructor() { console.log(this.label) }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  get feedback() {
+    return this.hasFeedback;
   }
-
 }

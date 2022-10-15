@@ -1,0 +1,10 @@
+@mixin error {
+  .error {
+    .error-text {
+      white-space: pre-line;
+      font-size: 12px;
+      color: $red;
+      padding: $small-spacer;
+    }
+  }
+}

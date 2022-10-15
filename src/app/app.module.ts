@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { BaInputComponent } from './components/ba-input/ba-input.component';
 import { BaFormComponent } from './components/ba-form/ba-form.component';
 import { BaHeaderComponent } from './components/ba-header/ba-header.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BaValidationFeedbackComponent } from './ba-validation-feedback/ba-validation-feedback.component';
 
 @NgModule({
   declarations: [
@@ -12,8 +14,9 @@ import { BaHeaderComponent } from './components/ba-header/ba-header.component';
     BaInputComponent,
     BaFormComponent,
     BaHeaderComponent,
+    BaValidationFeedbackComponent,
   ],
-  imports: [BrowserModule],
+  imports: [BrowserModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
