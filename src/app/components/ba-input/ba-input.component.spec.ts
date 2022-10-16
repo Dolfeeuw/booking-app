@@ -9,10 +9,9 @@ describe('BaInputComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BaInputComponent ],
+      declarations: [BaInputComponent],
       schemas: [NO_ERRORS_SCHEMA],
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(BaInputComponent);
     component = fixture.componentInstance;

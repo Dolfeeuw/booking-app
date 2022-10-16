@@ -15,11 +15,10 @@ describe('BaFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BaFormComponent ],
+      declarations: [BaFormComponent],
       schemas: [NO_ERRORS_SCHEMA],
-      imports: [ApolloTestingModule]
-    })
-    .compileComponents();
+      imports: [ApolloTestingModule],
+    }).compileComponents();
     controller = TestBed.inject(ApolloTestingController);
 
     fixture = TestBed.createComponent(BaFormComponent);
@@ -27,7 +26,7 @@ describe('BaFormComponent', () => {
     fixture.detectChanges();
   });
 
-    afterEach(() => {
+  afterEach(() => {
     controller.verify();
   });
 
