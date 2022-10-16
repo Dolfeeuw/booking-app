@@ -62,7 +62,9 @@ const resolvers = {
   Query: {
     booking(parent, args) {
       const filteredBookings = bookings.filter(
-        (booking) => booking.bookingCode === args.bookingCode && booking.passengers.lastName === args.lastName
+        (booking) =>
+          booking.bookingCode === args.bookingCode &&
+          booking.passengers.lastName === args.lastName
       )[0];
       return filteredBookings;
     },

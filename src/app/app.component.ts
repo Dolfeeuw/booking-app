@@ -11,10 +11,10 @@ export class AppComponent {
 
   displayData(event: any) {
     if (event.bookingData) {
-      this.bookingData = event.bookingData
+      this.bookingData = event.bookingData;
     }
     if (event.error) {
-      this.bookingData = event.error
+      this.bookingData = event.error;
     }
   }
 }
