@@ -1,4 +1,8 @@
-<div *ngIf="bookingData.bookingCode; else error" class="center flex">
+<div
+  *ngIf="bookingData.bookingCode; else error"
+  aria-live="polite"
+  class="center flex"
+>
   <h2>
     Hello {{ bookingData.passengers.firstName | titlecase }}
     {{ bookingData.passengers.lastName | titlecase }}
@@ -16,4 +20,8 @@
     {{ bookingData.itinerary.connections[0].destination.city.country.name }}
   </p>
 </div>
-<ng-template #error><div class="center flex text-center">No data found.</div></ng-template>
+<ng-template #error
+  ><div class="center flex text-center" aria-live="assertive">
+    No data found.
+  </div></ng-template
+>
