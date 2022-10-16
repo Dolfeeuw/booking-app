@@ -28,7 +28,7 @@ export class BaFormComponent implements OnInit {
     ]),
   });
 
-  @Output() successfulSubmit = new EventEmitter<object>();
+  @Output() submitData = new EventEmitter<object>();
 
   constructor(private apollo: Apollo) {}
 
@@ -42,23 +42,25 @@ export class BaFormComponent implements OnInit {
     return this.bookingForm.get('bookingCode');
   }
 
-  validate(value?: any) {
-    const feedbackErrors = { status: value.status, errors: value.errors };
+  validate(value: any) {
+    const feedbackErrors = {
+      errors: value.errors,
+    };
     return feedbackErrors;
   }
 
-  submitData(inputBookingDetails: any) {
+  submitInputDetails(inputBookingDetails: any) {
     const { bookingCode } = inputBookingDetails;
     const { lastName } = inputBookingDetails;
     this.apollo
       .watchQuery({
         variables: {
-          bookingCode: bookingCode,
-          lastName: lastName,
+          bookingCode: bookingCode.toUpperCase(),
+          lastName: lastName.toUpperCase(),
         },
         query: gql`
-          query Query($bookingCode: String!) {
-            booking(bookingCode: $bookingCode) {
+          query Query($bookingCode: String!, $lastName: String!) {
+            booking(bookingCode: $bookingCode, lastName: $lastName) {
               bookingCode
               passengers {
                 id
@@ -106,17 +108,19 @@ export class BaFormComponent implements OnInit {
       })
       .valueChanges.subscribe((result: any) => {
         const bookingDetails = result.data.booking;
-        this.successfulSubmit.emit({
-          bookingData: bookingDetails,
-        });
+        if (bookingDetails) {
+          this.submitData.emit({
+            bookingData: bookingDetails,
+          });
+        } else {
+          this.submitData.emit({ error: 'No data found' });
+        }
       });
   }
 
   onFormSubmit(formData: any) {
-    this.submitData(formData);
-    if (this.bookingForm.invalid) {
-      const formValue = this.bookingForm.value;
-      this.feedback = formValue;
+    if (!this.bookingForm.invalid) {
+      this.submitInputDetails(formData);
     }
   }
 }

@@ -7,10 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Booking application';
-  bookingData: any;
+  bookingData?: any;
 
   displayData(event: any) {
-    const bookingData = event?.bookingData;
-    this.bookingData = bookingData;
+    if (event.bookingData) {
+      this.bookingData = event.bookingData
+    }
+    if (event.error) {
+      this.bookingData = event.error
+    }
   }
 }

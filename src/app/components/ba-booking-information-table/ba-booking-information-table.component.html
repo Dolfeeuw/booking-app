@@ -1,7 +1,7 @@
-<div class="center flex">
+<div *ngIf="bookingData.bookingCode; else error" class="center flex">
   <h2>
-    hello {{ bookingData.passengers.firstName }}
-    {{ bookingData.passengers.lastName }}
+    Hello {{ bookingData.passengers.firstName | titlecase }}
+    {{ bookingData.passengers.lastName | titlecase }}
   </h2>
   <h3>Here are your booking details</h3>
   <p>
@@ -16,3 +16,4 @@
     {{ bookingData.itinerary.connections[0].destination.city.country.name }}
   </p>
 </div>
+<ng-template #error><div class="center flex text-center">No data found.</div></ng-template>

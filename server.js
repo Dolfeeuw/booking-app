@@ -4,7 +4,7 @@ import mockData from "./mock/mock.json" assert { type: "json" };
 
 const typeDefs = `#graphql
   type Query{ 
-    booking(bookingCode: String!): Booking
+    booking(bookingCode: String!, lastName: String!): Booking
   }
   type Booking {
     bookingCode: String
@@ -62,7 +62,7 @@ const resolvers = {
   Query: {
     booking(parent, args) {
       const filteredBookings = bookings.filter(
-        (booking) => booking.bookingCode === args.bookingCode
+        (booking) => booking.bookingCode === args.bookingCode && booking.passengers.lastName === args.lastName
       )[0];
       return filteredBookings;
     },
