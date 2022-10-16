@@ -7,10 +7,12 @@
   <p>
     Origin: {{ bookingData.itinerary.connections[0].origin.name }}
     {{ bookingData.itinerary.connections[0].origin.city.name }}
+    {{ bookingData.itinerary.connections[0].origin.city.country.name }}
   </p>
   <p>
     Destination airport:
     {{ bookingData.itinerary.connections[0].destination.name }}
     {{ bookingData.itinerary.connections[0].destination.city.name }}
+    {{ bookingData.itinerary.connections[0].destination.city.country.name }}
   </p>
 </div>

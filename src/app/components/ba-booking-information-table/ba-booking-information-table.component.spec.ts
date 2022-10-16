@@ -13,6 +13,37 @@ describe('BaBookingInformationTableComponent', () => {
 
     fixture = TestBed.createComponent(BaBookingInformationTableComponent);
     component = fixture.componentInstance;
+    component.booking = {
+      bookingCode: 'PZIGZ3',
+      passengers: {
+        firstName: 'RUUD',
+        lastName: 'HESP',
+      },
+      itinerary: {
+        connections: [
+          {
+            origin: {
+              name: 'Schiphol',
+              city: {
+                name: 'Amsterdam',
+                country: {
+                  name: 'The Netherlands',
+                },
+              },
+            },
+            destination: {
+              name: "Cote D'Azur Airport",
+              city: {
+                name: 'Nice',
+                country: {
+                  name: 'France',
+                },
+              },
+            },
+          },
+        ],
+      },
+    };
     fixture.detectChanges();
   });
 

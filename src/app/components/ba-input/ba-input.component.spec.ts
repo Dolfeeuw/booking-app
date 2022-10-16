@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BaInputComponent } from './ba-input.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('BaInputComponent', () => {
   let component: BaInputComponent;
@@ -8,7 +9,8 @@ describe('BaInputComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BaInputComponent ]
+      declarations: [ BaInputComponent ],
+      schemas: [NO_ERRORS_SCHEMA],
     })
     .compileComponents();
 
