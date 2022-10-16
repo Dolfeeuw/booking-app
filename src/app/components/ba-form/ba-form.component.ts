@@ -17,8 +17,7 @@ export class BaFormComponent implements OnInit {
       Validators.required,
       Validators.minLength(5),
       Validators.maxLength(6),
-      Validators.min(2),
-      Validators.max(9),
+      Validators.pattern('^[a-zA-Z2-9]*'),
     ]),
     lastName: new FormControl('', [
       Validators.required,

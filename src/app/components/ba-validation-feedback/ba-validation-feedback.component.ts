@@ -15,8 +15,6 @@ export class BaValidationFeedbackComponent implements OnInit {
     const { required } = this.feedback?.errors || {};
     const { minlength } = this.feedback?.errors || {};
     const { maxlength } = this.feedback?.errors || {};
-    const { min } = this.feedback?.errors || {};
-    const { max } = this.feedback?.errors || {};
     const { pattern } = this.feedback?.errors || {};
     let errorMsg = [];
 
@@ -33,11 +31,12 @@ export class BaValidationFeedbackComponent implements OnInit {
         'The maximum amount of characters is ' + maxlength.requiredLength
       );
     }
-    if (min || max) {
-      errorMsg.push('\n' + 'Only numbers 2-9 are allowed');
+    if (pattern?.requiredPattern === '^[a-zA-Z2-9]*$') {
+      errorMsg.push('Only numbers 2-9 are allowed');
     }
-    if (pattern) {
-      errorMsg.push('This field is required');
+
+    if (pattern?.requiredPattern === '^[a-zA-Z ]*$') {
+      errorMsg.push('Only alphabets are allowed');
     }
     return errorMsg;
   }
