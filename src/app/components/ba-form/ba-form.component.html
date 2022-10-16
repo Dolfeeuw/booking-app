@@ -4,14 +4,14 @@
     <p>{{ description }}</p>
   </div>
 
-  <form [formGroup]="bookingForm" (ngSubmit)="onFormSubmit()">
+  <form [formGroup]="bookingForm" (ngSubmit)="onFormSubmit(bookingForm.value)">
     <div class="mx-3">
       <app-ba-input
         class="d-flex"
         label="Booking code"
-        id="bookingNumber"
-        name="bookingNumber"
-        [hasFeedback]="validate(bookingNumber)"
+        id="bookingCode"
+        name="bookingCode"
+        [hasFeedback]="validate(bookingCode)"
       ></app-ba-input>
       <app-ba-input
         class="d-flex"

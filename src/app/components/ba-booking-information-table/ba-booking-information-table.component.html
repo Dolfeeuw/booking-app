@@ -1,0 +1,16 @@
+<div>
+  <h2>
+    hello {{ bookingData.passengers.firstName }}
+    {{ bookingData.passengers.lastName }}
+  </h2>
+  <h3>Here are your booking details</h3>
+  <p>
+    Origin: {{ bookingData.itinerary.connections[0].origin.name }}
+    {{ bookingData.itinerary.connections[0].origin.city.name }}
+  </p>
+  <p>
+    Destination airport:
+    {{ bookingData.itinerary.connections[0].destination.name }}
+    {{ bookingData.itinerary.connections[0].destination.city.name }}
+  </p>
+</div>

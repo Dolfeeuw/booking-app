@@ -1,2 +1,6 @@
 <app-ba-header></app-ba-header>
-<app-ba-form></app-ba-form>
+<app-ba-form (successfulSubmit)="displayData($event)"></app-ba-form>
+<app-ba-booking-information-table
+  *ngIf="bookingData"
+  [booking]="bookingData"
+></app-ba-booking-information-table>

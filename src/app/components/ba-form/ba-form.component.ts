@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Apollo, gql } from 'apollo-angular';
 
 @Component({
   selector: 'app-ba-form',
@@ -12,7 +13,7 @@ export class BaFormComponent implements OnInit {
     'You can find your booking by filling out your family name and the booking code in your booking information';
   feedback?: Object;
   bookingForm = new FormGroup({
-    bookingNumber: new FormControl('', [
+    bookingCode: new FormControl('', [
       Validators.required,
       Validators.minLength(5),
       Validators.maxLength(6),
@@ -27,7 +28,10 @@ export class BaFormComponent implements OnInit {
       Validators.pattern('^[a-zA-Z ]*$'),
     ]),
   });
-  constructor() {}
+
+  @Output() successfulSubmit = new EventEmitter<object>();
+
+  constructor(private apollo: Apollo) {}
 
   ngOnInit(): void {}
 
@@ -35,8 +39,8 @@ export class BaFormComponent implements OnInit {
     return this.bookingForm.get('lastName');
   }
 
-  get bookingNumber() {
-    return this.bookingForm.get('bookingNumber');
+  get bookingCode() {
+    return this.bookingForm.get('bookingCode');
   }
 
   validate(value?: any) {
@@ -44,7 +48,73 @@ export class BaFormComponent implements OnInit {
     return feedbackErrors;
   }
 
-  onFormSubmit() {
+  submitData(inputBookingDetails: any) {
+    const { bookingCode } = inputBookingDetails;
+    const { lastName } = inputBookingDetails;
+    this.apollo
+      .watchQuery({
+        variables: {
+          bookingCode: bookingCode,
+          lastName: lastName,
+        },
+        query: gql`
+          query Query($bookingCode: String!) {
+            booking(bookingCode: $bookingCode) {
+              bookingCode
+              passengers {
+                id
+                firstName
+                lastName
+                title {
+                  code
+                  name
+                }
+              }
+              itinerary {
+                type
+                connections {
+                  id
+                  duration
+                  origin {
+                    IATACode
+                    name
+                    city {
+                      IATACode
+                      name
+                      country {
+                        code
+                        name
+                      }
+                    }
+                  }
+                  destination {
+                    IATACode
+                    name
+                    city {
+                      IATACode
+                      name
+                      country {
+                        code
+                        name
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        `,
+      })
+      .valueChanges.subscribe((result: any) => {
+        const bookingDetails = result.data.booking;
+        this.successfulSubmit.emit({
+          bookingData: bookingDetails,
+        });
+      });
+  }
+
+  onFormSubmit(formData: any) {
+    this.submitData(formData);
     if (this.bookingForm.invalid) {
       const formValue = this.bookingForm.value;
       this.feedback = formValue;
