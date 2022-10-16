@@ -1,7 +1,9 @@
 {
   "name": "booking-application",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
+    "start-server": "node server.js",
     "build": "ng build",
     "lint": "eslint . --ext .ts",
     "ng": "ng",
@@ -18,10 +20,10 @@
     "@angular/forms": "^14.2.0",
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
-    "@angular/router": "^14.2.0",
-    "rxjs": "~7.5.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.11.4"
+    "@apollo/client": "^3.0.0",
+    "@apollo/server": "^4.0.0",
+    "apollo-angular": "^4.1.0",
+    "graphql": "^16.6.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.2.5",
