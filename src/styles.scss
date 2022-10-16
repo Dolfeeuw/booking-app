@@ -1,11 +1,11 @@
-@import "mixins";
+@import "styles/mixins";
 @include resetMixin;
 @include d-block;
 @include d-flex;
 @include border-solid;
 @include flex;
 
-@import "spacing";
+@import "styles/spacing";
 @include mx-3;
 @include pb-1;
 @include pt-1;
@@ -14,17 +14,17 @@
 @include center;
 @include full-width;
 
-@import "fonts";
+@import "styles/fonts";
 @include font-family;
 @include font-base-color;
 @include text-bold;
 @include heading-1;
 @include heading-2;
 
-@import "button";
+@import "styles/button";
 @include button;
 
-@import "validation";
+@import "styles/validation";
 @include error;
 
 body {
