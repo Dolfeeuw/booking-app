@@ -10,4 +10,3 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 Run `npm run start-server` for a graphql server. Optional: navigate to `http://localhost:4000`.
 
-## Decision Log (TODO)
